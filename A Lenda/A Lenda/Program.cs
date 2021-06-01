@@ -71,12 +71,23 @@ namespace A_Lenda
 
                 // Voltando a cor do texto para a cor padrão
                 Console.ResetColor();
-                // Instanciar os  repositórios
+                // Instanciar os  repositórios ea s classes 
+                Aluno aluno = new Aluno();
                 RepositorioMySQLAluno repositorioaluno = new RepositorioMySQLAluno();
+                
+                Professor professor = new Professor();
+                RepositorioMySQLProfessor repositorioprof = new RepositorioMySQLProfessor();
+                    
+                Disciplina disciplina =  new Disciplina();
                 RepositorioMySQLDisciplina repositoriodisciplina = new RepositorioMySQLDisciplina();
+
+                Escola escola = new Escola();
                 RepositorioMySQLEscola repositorioescola = new RepositorioMySQLEscola();
-               
+
+                Turma turma = new Turma();
                 RepositorioMySQLTurma repositorioturma = new RepositorioMySQLTurma();
+
+
                 try
                 {
                     switch (Console.ReadKey().KeyChar)
@@ -85,7 +96,7 @@ namespace A_Lenda
                             Console.Clear();
 
                             // Instanciar o Aluno
-                            Aluno aluno = new Aluno();
+                            
                             // Solicitar o nome do aluno
                             Console.WriteLine("Informe o seu nome:");
                             // Ober o nome do aluno (digitado no teclado)
@@ -237,8 +248,7 @@ namespace A_Lenda
             {
                 try
                 {
-                    RepositorioMySQLProfessor repositorioprof = new RepositorioMySQLProfessor();
-                    Professor professor = new Professor();
+                   
                     switch (Console.ReadKey().KeyChar)
                     {
                         case '1':
