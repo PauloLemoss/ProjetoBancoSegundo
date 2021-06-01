@@ -111,6 +111,7 @@ namespace A_Lenda
             // lista turma
             List<Turma> turmas = new List<Turma>();
             // Bloco do Try: Tentando abrir conexão e realizar comando no Banco de Dados
+
             try
             {
                 MySqlConnection conexao = new MySqlConnection(@"Server=localhost;Port=3306;DataBase=bdprovapaulo;Uid=root;Pwd=kabuterimon12;");
@@ -133,29 +134,31 @@ namespace A_Lenda
                 }
                 // Adicionando parâmetro SQL para o Nome
                 comando.Parameters.AddWithValue("@NomeTurma", string.Format($"%{nome}%"));
+
+
+                // Executando (Efetivando) o comando criando anteriormente e salvando os dados no Data Reader
+                MySqlDataReader reader = comando.ExecuteReader();
+                // Em posse do Data Reader, vou ler os dados, sempre do primeiro até o último e "pra frente"
+                while (reader.Read())
+                {
+                    // Instanciando um objeto chamado "turma" da classe "Turma"
+                    Turma turma = new Turma();
+                    // Buscando a informação ID do Banco de dados e salvando no atributo correspondente
+                    turma.Id = reader.GetInt32("id_turma");
+                    turma.NomeTurma = reader.GetString("NomeTurma");
+                    turma.IdProfessor = reader.GetInt32("id_professor");
+                    // Buscando a informação Nome do Banco de dados e salvando no atributo correspondente
+                    turma.IdAluno = reader.GetInt32("id_aluno");
+                    turma.IdDisciplina = reader.GetInt32("id_disciplina");
+
+                    // Buscando a informação Email do Banco de dados e salvando no atributo correspondente
+
+                    turmas.Add(turma);
+                }
             }
             catch
             {
 
-            }
-            // Executando (Efetivando) o comando criando anteriormente e salvando os dados no Data Reader
-            MySqlDataReader reader = comando.ExecuteReader();
-            // Em posse do Data Reader, vou ler os dados, sempre do primeiro até o último e "pra frente"
-            while (reader.Read())
-            {
-                // Instanciando um objeto chamado "turma" da classe "Turma"
-                Turma turma = new Turma();
-                // Buscando a informação ID do Banco de dados e salvando no atributo correspondente
-                turma.Id = reader.GetInt32("id_turma");
-                turma.NomeTurma = reader.GetString("NomeTurma");
-                turma.IdProfessor = reader.GetInt32("id_professor");
-                // Buscando a informação Nome do Banco de dados e salvando no atributo correspondente
-                turma.IdAluno = reader.GetInt32("id_aluno");
-                turma.IdDisciplina = reader.GetInt32("id_disciplina");
-
-                // Buscando a informação Email do Banco de dados e salvando no atributo correspondente
-
-                turmas.Add(turma);
             }
             try
             {

@@ -8,7 +8,7 @@ namespace A_Lenda
 {
     public class Professor
     {
-        public string IdProfessor { get; set; }
+        public int IdProfessor { get; set; }
         public string NomeProfessor { get; set; }
         public string CpfProf { get; set; }
         public string EmailProf { get; set; }

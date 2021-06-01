@@ -139,7 +139,7 @@ namespace A_Lenda
                     // Instanciando um objeto chamado "aluno" da classe "Aluno"
                     Professor professor = new Professor();
                     // Buscando a informação ID do Banco de dados e salvando no atributo correspondente
-                    professor.IdProfessor = reader.GetString("id_disciplina");
+                    professor.IdProfessor = reader.GetInt32("id_disciplina");
                     // Buscando a informação Nome do Banco de dados e salvando no atributo correspondente
                     professor.NomeProfessor = reader.GetString("NomeProfessor");
                     professor.CpfProf = reader.GetString("CpfProf");

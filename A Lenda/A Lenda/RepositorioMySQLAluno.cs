@@ -22,7 +22,7 @@ namespace A_Lenda
 
                 // Instanciando um "Command" com o código SQL e a Conexão estabelecida anteriormente
 
-                MySqlCommand comando = new MySqlCommand($"INSERT INTO aluno (NomeAluno, Cpf, Email ) VALUES (@NomeAluno, @CpfAluno,EmailAluno)", conexao);
+                MySqlCommand comando = new MySqlCommand($"INSERT INTO aluno (NomeAluno, Cpf, Email ) VALUES (@NomeAluno, @CpfAluno,@EmailAluno)", conexao);
                 // Executando (Efetivando) o comando criando anteriormente
                 comando.Parameters.AddWithValue("@NomeAluno", aluno.NomeAluno);
                 comando.Parameters.AddWithValue("@EmailAluno", aluno.EmailAluno);
